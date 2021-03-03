@@ -3,14 +3,14 @@
   import {RetentionDays} from "@aws-cdk/aws-logs";
   import {Effect, PolicyStatement} from "@aws-cdk/aws-iam";
 
-  export interface CdkCallCustomResourceConstructProps {
+  export interface SingleInsertCustomResourceConstructProps {
     tableName: string
     tableArn: string
   }
 
-  export class CdkCallCustomResourceConstruct extends Construct {
+  export class SingleInsertCustomResourceConstruct extends Construct {
 
-    constructor(scope: Construct, id: string, props: CdkCallCustomResourceConstructProps) {
+    constructor(scope: Construct, id: string, props: SingleInsertCustomResourceConstructProps) {
       super(scope, id);
       this.insertRecord(props.tableName,props.tableArn,{
         id: {S:'ID_1'},

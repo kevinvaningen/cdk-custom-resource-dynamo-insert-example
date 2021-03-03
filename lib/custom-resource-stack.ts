@@ -1,7 +1,7 @@
 import {Construct, Stack, StackProps} from "@aws-cdk/core";
-import {CdkCallCustomResourceConstruct} from "./cdk-call-custom-resource-construct";
 import {AttributeType, Table} from "@aws-cdk/aws-dynamodb";
 import {BatchInsertCustomResourceConstruct} from "./batch-insert-custom-resource-construct";
+import {SingleInsertCustomResourceConstruct} from "./single-insert-custom-resource-construct";
 
 export class CustomResourceStack extends Stack {
     constructor(scope: Construct, id: string, props?: StackProps) {
@@ -14,7 +14,7 @@ export class CustomResourceStack extends Stack {
             }
         );
 
-        const cdkCallCustomResourceConstruct = new CdkCallCustomResourceConstruct(this, 'cdkCallCustomResourceConstruct', {
+        const cdkCallCustomResourceConstruct = new SingleInsertCustomResourceConstruct(this, 'cdkCallCustomResourceConstruct', {
             tableName: tableName,
             tableArn: dynamoTable.tableArn
         });
